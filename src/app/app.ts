@@ -1,19 +1,29 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Home } from './home/home';
-import { Hero } from './hero/hero';
-import { Navbar } from './navbar/navbar';
-import { Footer } from './footer/footer';
-import { About } from './about/about';
-import { Projects } from './projects/projects';
-import { Product } from './product/product';
+import { InputToDo } from './input/input';
+import { Show } from './show/show';
+import { Data } from './data';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Hero, Navbar, Footer, About, Projects , Product],
+  imports: [RouterOutlet, InputToDo, Show],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App  {
   protected readonly title = signal('my-angular-app');
+
+  newTodo: Data[] = [];
+  x:number= 0 ;
+  
+  updateToDo(newValue: string) {
+    this.newTodo = [...this.newTodo, { title: newValue, isChecked: false }];
+  }
+
+handleProgress(count: number) {
+  this.x = count;
+}
+ 
+
+ 
 }

@@ -1,6 +1,39 @@
-<app-navbar></app-navbar>
-<!-- <app-hero></app-hero>
-<app-about></app-about>
-<app-projects></app-projects> -->
-<app-product></app-product>
-<app-footer></app-footer>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      
+      <div class="card shadow border-0 bg-white rounded-4 overflow-hidden">
+        
+        <div class="card-header bg-primary text-white  text-center border-0 position-relative">
+          <h2 class="fw-bold mb-2"> My Todo </h2>
+          
+          <h5 class="fw-light opacity-90 mb-3">
+            Done <span class="badge bg-white text-primary fw-bold px-2.5 py-1 fs-6">{{ x }}</span> 
+            from <span class="fw-bold">{{ newTodo.length }}</span> tasks
+          </h5>
+
+          <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+            <div 
+              class="progress-bar bg-white shadow-sm" 
+              role="progressbar" 
+              [style.width]="newTodo.length > 0 ? (x / newTodo.length * 100) + '%' : '0%'"
+              aria-valuemin="0" 
+              aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body p-4 bg-light bg-opacity-50">
+          
+          <app-input (create)="updateToDo($event)"></app-input>
+          
+          <hr class="text-muted my-4 opacity-25">
+
+          <app-show [ArrayTodo]="newTodo" (numberOFProgress)="x = $event"></app-show>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
